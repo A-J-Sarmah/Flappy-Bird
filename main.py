@@ -2,7 +2,7 @@ import pygame
 import os
 
 FPS = 60
-VELOCITY = 4
+VELOCITY = 2
 VELOCITY_BIRD = 4
 WIDTH, HEIGHT = 288, 512
 IS_PLAYING = False
@@ -35,7 +35,6 @@ def draw_window(bird):
             if pipes.index(pipe) == 0:
                 WINDOW.blit(pygame.transform.rotate(PIPE, 180), (pipe.x, pipe.y))
             else:
-                print(pipe)
                 WINDOW.blit(PIPE, (pipe.x, pipe.y))
         WINDOW.blit(score, (10, 10))
     pygame.display.update()
@@ -84,8 +83,10 @@ def main():
         key_pressed = pygame.key.get_pressed()
         if key_pressed[pygame.K_UP]:
             bird.y -= VELOCITY_BIRD
-        if key_pressed[pygame.K_DOWN]:
+        elif key_pressed[pygame.K_DOWN]:
             bird.y += VELOCITY_BIRD
+        else:
+            bird.y += 1
         for pipe in pipes:
             pipe.x -= VELOCITY
             if pipe.x < -50 and pipe.y == 0:
