@@ -96,11 +96,11 @@ def main():
                 pipes[1] = pygame.Rect(288, 258, 52, 200)
                 SCORE += 1
         if SCORE == 10:
-            VELOCITY = 8
+            VELOCITY = 3
         if SCORE == 50:
-            VELOCITY = 10
+            VELOCITY = 5
         if SCORE == 100:
-            VELOCITY = 15
+            VELOCITY = 10
         is_over = False
         for pipe in pipes:
             if pipe.colliderect(bird):
